@@ -1,52 +1,49 @@
-# GitHub Action for generating a contribution graph with a snake eating your contributions.
+# GitHub Action for generating a contribution graph with a snake eating your contributions
 name: Generate Snake
 
-# Controls when the action will run.
+# Controls when the action will run
 on:
-  schedule:
-      # every 12 hours
-    - cron: "0 */12 * * *"
-
-  # This command allows us to run the Action automatically from the Actions tab.
+  # This allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
   
-  # Also run on every push on the master branch
-  push:
-    branches:
-    - main
+  # Runs on a schedule (every 12 hours)
+  schedule:
+    - cron: '0 */12 * * *'
 
-# The sequence of runs in this workflow:
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
+    # This is the most important part! It gives the action write permissions
+    permissions:
+      contents: write
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Clone repo
-        uses: actions/checkout@v3
-    
-      - name: Generate the snake files in './dist/'
-        uses: Platane/snk@v3
-        id: snake-gif
+      # Checks out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Generates the snake animation
+      - uses: Platane/snk@v3
         with:
+          # Your GitHub username. ${{ github.repository_owner }} will automatically use the owner of the repo.
           github_user_name: ${{ github.repository_owner }}
+          
+          # A list of comma-separated branches to include in the contribution graph, defaults to all branches
+          # branches: main,master
+
+          # The output file for the animation
           outputs: |
             dist/github-contribution-grid-snake.svg
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
-            dist/github-contribution-grid-snake.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
-        env:
-           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Show build status
-        run: git status
-
-      - name: Push new files to the output branch
-        uses: crazy-max/ghaction-github-pages@v3.1.0
-        with:
-          target_branch: output
-          build_dir: dist
-          commit_message: Update snake animations
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Pushes the generated file to your repository
+      - run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m "Generate Contribution Snake"
+          git push
