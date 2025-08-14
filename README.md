@@ -1,4 +1,4 @@
-<img align="right" src="https://visitor-badge.laobi.icu/badge?page_id=karan9576.karan9576" />
+<img align="right" src="https://visitor-badge.laobi.icu/badge?page_id=OmKumar396.OmKumar396" />
 
 <h1 align="center">
     <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=2000&lines=Hi+There!+👋;+I'm+Om+Kumar!;" />
@@ -10,13 +10,7 @@
 
 <div align="center">
  
- 🔭 I’m currently working on **ChefMatch**
- 
- 🌱 I’m currently learning **React**
-
-💬 Ask me about **Node.js, express , javascript**
-
-⚡ Fun fact **"Did you know? The term 'debugging' was popularized in the 1940s when computer pioneer Grace Hopper removed an actual moth causing an issue in the Mark II computer. She literally 'debugged' the system!"**
+ 🔭 I’m currently working on **DocFinder**
 
  </div>
  
@@ -37,8 +31,8 @@
 <h2 align="center">⚒️ Languages-Frameworks-Tools ⚒️</h2>
 <br/>
 <div align="center">
-    <img src="https://skillicons.dev/icons?i=bootstrap,html,css,vscode,github,git,jenkins,docker" />
-    <img src="https://skillicons.dev/icons?i=terraform,aws,nodejs,python,javascript,express,mongodb,c,java,mysql" /><br>
+    <img src="https://skillicons.dev/icons?i=bootstrap,html,css,vscode,github,git" />
+    <img src="https://skillicons.dev/icons?i=nodejs,python,javascript,express,mongodb,c,java,mysql" /><br>
 </div>
 
 <br/>
